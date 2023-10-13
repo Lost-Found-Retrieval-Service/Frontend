@@ -19,12 +19,14 @@ const CardImg = styled.img`
   width: 320px; /* 원하는 이미지 너비 */
   height: 170px; /* 원하는 이미지 높이 */
   object-fit: contain;
-  /* border: 2px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
 `;
 

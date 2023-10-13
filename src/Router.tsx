@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import ListPage from './pages/ListPage';
+import List from './pages/List';
 
 const Router = () => {
   const routerData = [
     {
       path: '/list',
-      element: <ListPage />,
+      element: <List />,
     },
   ];
 
