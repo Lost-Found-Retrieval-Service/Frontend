@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardViewProps } from '../types/CardViewProps';
+import { LostProps } from '../types/LostProps';
 
 const CardWrapper = styled.div`
   display: flex;
@@ -48,14 +48,14 @@ const SubInfo = styled.div`
 
 // TODO: 데이터를 동적으로 불러오기
 // TODO: 데이터 형식 수정하기
-const CardView = ({ title, content, img }: CardViewProps) => {
+const CardView = ({ item, title, date, image, atc_id, onClick }: LostProps) => {
   return (
-    <CardWrapper>
-      {img && <CardImg src={img} alt="" />}
+    <CardWrapper key={`id-${atc_id}`} onClick={onClick}>
+      {image && <CardImg src={image} alt="" />}
       <ContentWrapper>
-        <CardTitle>{title}</CardTitle>
-        <CardContent>{content}</CardContent>
-        <SubInfo>2023년 10월 10일</SubInfo>
+        <CardTitle>{item}</CardTitle>
+        <CardContent>{title}</CardContent>
+        <SubInfo>{date}</SubInfo>
       </ContentWrapper>
     </CardWrapper>
   );
