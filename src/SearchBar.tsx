@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import SearchContext from './SearchContext';
+import { SearchContextType } from './SearchProvider';
 
 const SytledSearchBarContainer = styled.div`
   display: flex;
@@ -39,14 +41,22 @@ const StyledMainText = styled.div`
 `;
 
 export default function SearchBar() {
-  const [lostItem, setLostItem] = useState({
-    name: null,
-    date: null,
-    place: null,
-    owner: null,
-  });
-  const [turnedOnInput, setTurnedOnInput] = useState<string | null>(null);
-  const [inputValue, setInputValue] = useState('');
+  const {
+    lostItem,
+    setLostItem,
+    turnedOnInput,
+    setTurnedOnInput,
+    inputValue,
+    setInputValue,
+  } = useContext<SearchContextType>(SearchContext);
+  // const [lostItem, setLostItem] = useState({
+  //   name: null,
+  //   date: null,
+  //   place: null,
+  //   owner: null,
+  // });
+  // const [turnedOnInput, setTurnedOnInput] = useState<string | null>(null);
+  // const [inputValue, setInputValue] = useState('');
 
   const handleOptionButtonClick = (option: string) => {
     setTurnedOnInput(option);
