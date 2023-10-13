@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import SearchContext from './SearchContext';
-import { SearchContextType } from './SearchProvider';
 
 const SytledSearchBarContainer = styled.div`
   display: flex;
@@ -41,42 +40,11 @@ const StyledMainText = styled.div`
 `;
 
 export default function SearchBar() {
-  const {
-    lostItem,
-    setLostItem,
-    turnedOnInput,
-    setTurnedOnInput,
-    inputValue,
-    setInputValue,
-  } = useContext<SearchContextType>(SearchContext);
-  // const [lostItem, setLostItem] = useState({
-  //   name: null,
-  //   date: null,
-  //   place: null,
-  //   owner: null,
-  // });
-  // const [turnedOnInput, setTurnedOnInput] = useState<string | null>(null);
-  // const [inputValue, setInputValue] = useState('');
+  const { lostItem, setTurnedOnInput } = useContext(SearchContext)!;
 
   const handleOptionButtonClick = (option: string) => {
     setTurnedOnInput(option);
   };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleFilterButtonClick = () => {
-    if (turnedOnInput !== null) {
-      setLostItem((lostItem) => ({
-        ...lostItem,
-        [turnedOnInput]: inputValue,
-      }));
-      setTurnedOnInput(null);
-    }
-  };
-
-  console.log(lostItem);
 
   return (
     <SytledSearchBarContainer>
@@ -108,8 +76,8 @@ export default function SearchBar() {
           type="button"
           onClick={() => handleOptionButtonClick('owner')}
         >
-          <StyledMainText>분실자명</StyledMainText>
-          {lostItem.owner || <div>물건에 이름이 적혀 있나요?</div>}
+          <StyledMainText>관할구청</StyledMainText>
+          {lostItem.office || <div>어디서 보관하고 있을까요?</div>}
         </StyledSearchBarItem>
         <StyledSearchBarItem type="button">
           <svg
@@ -122,19 +90,6 @@ export default function SearchBar() {
           </svg>
         </StyledSearchBarItem>
       </StyledSearchBarList>
-      {turnedOnInput && (
-        <div>
-          <input
-            type="text"
-            value={inputValue}
-            placeholder={`${turnedOnInput}을 입력하세요`}
-            onChange={handleInputChange}
-          />
-          <button type="button" onClick={handleFilterButtonClick}>
-            클릭
-          </button>
-        </div>
-      )}
     </SytledSearchBarContainer>
   );
 }
