@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import CardView from '../components/CardView';
 import CardViewSkeleton from '../components/CardViewSkeleton';
-import { FoundProps } from '../types/Foundprops';
+import { FoundProps } from '../types/FoundProps';
 
 // TODO: 무한 스크롤? 페이지네이션? 구현
 const Found = () => {
@@ -96,13 +96,6 @@ const Found = () => {
 };
 
 export default Found;
-
-// TODO: 데이터를 동적으로 불러오기
-// const cardData = Array.from({ length: 16 }, (_, index) => ({
-//   item: `카드 제목 ${index + 1}`,
-//   content: `카드 내용 ${index + 1}`,
-//   img: projectImg,
-// }));
 
 const GridWrapper = styled.div`
   display: grid;

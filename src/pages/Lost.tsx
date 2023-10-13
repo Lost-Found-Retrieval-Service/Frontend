@@ -5,14 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import CardView from '../components/CardView';
 import CardViewSkeleton from '../components/CardViewSkeleton';
 import { LostProps } from '../types/LostProps';
-// import projectImg from '../assets/project.png';
+import { filteredItem } from '../types/FilteredItem';
 
 // TODO: 무한 스크롤? 페이지네이션? 구현
 const Lost = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [cardDatas, setCardDatas] = useState([]);
-  // const [isFetching, setIsFetching] = useState(false);
 
   const params = new URLSearchParams(location.search);
   const item = params.get('item');
@@ -40,7 +39,8 @@ const Lost = () => {
         const data = response.data;
         console.log('lost-items', data.result);
         const filteredResult = data.result.filter(
-          (item: { image: string }) =>
+          // 이미지가 있는 item만 필터
+          (item: filteredItem) =>
             item.image !==
             'https://www.lost112.go.kr/lostnfs/images/sub/img04_no_img.gif',
         );
