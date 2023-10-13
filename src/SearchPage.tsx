@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import SearchProvider from './SearchProvider';
+import SearchBarFilter from './SearchBarFilter';
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -35,7 +36,10 @@ export default function SearchPage() {
           <StyledLogoHeader>CATCH</StyledLogoHeader>
         </button>
       </StyledHeader>
-      <SearchProvider>{/* <SearchBar /> */}</SearchProvider>
+      <SearchProvider>
+        <SearchBar />
+        <SearchBarFilter />
+      </SearchProvider>
     </StyledContainer>
   );
 }
