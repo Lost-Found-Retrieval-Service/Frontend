@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import SearchContext from '../contexts/SearchContext';
+import { useNavigate } from 'react-router-dom';
 
 const SytledSearchBarContainer = styled.div`
   display: flex;
@@ -41,6 +42,11 @@ const StyledMainText = styled.div`
 
 export default function SearchBar() {
   const { lostItem, setTurnedOnInput } = useContext(SearchContext)!;
+  const navigate = useNavigate();
+
+  const navigateToLost = () => {
+    navigate('/lost');
+  };
 
   const handleOptionButtonClick = (option: string) => {
     setTurnedOnInput(option);
@@ -79,7 +85,7 @@ export default function SearchBar() {
           <StyledMainText>관할구청</StyledMainText>
           {lostItem.office || <div>어디서 보관하고 있을까요?</div>}
         </StyledSearchBarItem>
-        <StyledSearchBarItem type="button">
+        <StyledSearchBarItem type="button" onClick={navigateToLost}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
