@@ -64,7 +64,7 @@ const Found = () => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>습득물</h1>
 
       <GridWrapper>
@@ -91,11 +91,17 @@ const Found = () => {
           ))
         )}
       </GridWrapper>
-    </div>
+    </Container>
   );
 };
 
 export default Found;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+`;
 
 const GridWrapper = styled.div`
   display: grid;

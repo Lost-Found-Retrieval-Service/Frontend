@@ -64,7 +64,7 @@ const Lost = () => {
   };
 
   return (
-    <div>
+    <Container>
       <h1>분실물</h1>
 
       <GridWrapper>
@@ -91,18 +91,17 @@ const Lost = () => {
           ))
         )}
       </GridWrapper>
-    </div>
+    </Container>
   );
 };
 
 export default Lost;
 
-// TODO: 데이터를 동적으로 불러오기
-// const cardData = Array.from({ length: 16 }, (_, index) => ({
-//   item: `카드 제목 ${index + 1}`,
-//   content: `카드 내용 ${index + 1}`,
-//   img: projectImg,
-// }));
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+`;
 
 const GridWrapper = styled.div`
   display: grid;
