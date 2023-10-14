@@ -20,8 +20,8 @@ export type SearchContextType = {
   setTurnedOnInput: React.Dispatch<React.SetStateAction<null | string>>;
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  day: dayjs.Dayjs;
-  setDay: React.Dispatch<React.SetStateAction<dayjs.Dayjs>>;
+  dateInputValue: null | Dayjs;
+  setDateInputValue: React.Dispatch<React.SetStateAction<null | Dayjs>>;
 };
 
 export default function SearchProvider({ children }: SearchProviderProps) {
@@ -33,7 +33,9 @@ export default function SearchProvider({ children }: SearchProviderProps) {
   });
   const [turnedOnInput, setTurnedOnInput] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState<string>('');
-  const [day, setDay] = useState<Dayjs>(dayjs());
+  const [dateInputValue, setDateInputValue] = useState<dayjs.Dayjs | null>(
+    dayjs(),
+  );
 
   return (
     <SearchContext.Provider
@@ -44,8 +46,8 @@ export default function SearchProvider({ children }: SearchProviderProps) {
         setTurnedOnInput,
         inputValue,
         setInputValue,
-        day,
-        setDay,
+        dateInputValue,
+        setDateInputValue,
       }}
     >
       {children}
