@@ -74,7 +74,7 @@ export default function SearchBar() {
         </StyledSearchBarItem>
         <StyledSearchBarItem
           type="button"
-          onClick={() => handleOptionButtonClick('owner')}
+          onClick={() => handleOptionButtonClick('office')}
         >
           <StyledMainText>관할구청</StyledMainText>
           {lostItem.office || <div>어디서 보관하고 있을까요?</div>}
