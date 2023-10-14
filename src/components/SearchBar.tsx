@@ -45,7 +45,14 @@ export default function SearchBar() {
   const navigate = useNavigate();
 
   const navigateToLost = () => {
-    navigate('/lost');
+    const { name: item, date, place: location_detail, office } = lostItem;
+    const entries = Object.entries({ item, date, location_detail, office });
+    const filteredEntries = entries.filter(([value]) => value !== null) as [
+      string,
+      string,
+    ][];
+    const queryString = new URLSearchParams(filteredEntries).toString();
+    navigate(`/lost?${queryString}`);
   };
 
   const handleOptionButtonClick = (option: string) => {
