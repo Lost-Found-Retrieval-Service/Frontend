@@ -27,6 +27,7 @@ export default function SearchBarFilter() {
         [turnedOnInput]: inputValue,
       }));
       setTurnedOnInput(null);
+      setInputValue('');
     }
   };
   if (turnedOnInput === 'date') {
