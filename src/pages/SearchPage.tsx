@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchBar from './SearchBar';
-import SearchProvider from './SearchProvider';
-import SearchBarFilter from './SearchBarFilter';
+import SearchBar from '../components/SearchBar';
+import SearchProvider from '../providers/SearchProvider';
+import SearchBarFilter from '../components/SearchBarFilter';
 
 const StyledContainer = styled.div`
   height: 100vh;

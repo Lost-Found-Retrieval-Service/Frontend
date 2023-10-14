@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import SearchContext from './SearchContext';
+import SearchContext from '../contexts/SearchContext';
 import dayjs, { Dayjs } from 'dayjs';
 
 interface SearchProviderProps {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import GlobalStyle from './GlobalStyle';
-import SearchPage from './SearchPage';
+import GlobalStyle from './styles/GlobalStyle';
+import SearchPage from './pages/SearchPage';
 
 function App() {
   return (

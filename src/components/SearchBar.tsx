@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import SearchContext from './SearchContext';
+import SearchContext from '../contexts/SearchContext';
 
 const SytledSearchBarContainer = styled.div`
   display: flex;
