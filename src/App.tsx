@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
+import Router from './Router';
 import GlobalStyle from './styles/GlobalStyle';
-import SearchPage from './pages/SearchPage';
-('react-router-dom');
+
 function App() {
   return (
-    <>
+    <div>
       <GlobalStyle />
-      <SearchPage />
-    </>
+      <Router />
+    </div>
   );
 }
 
