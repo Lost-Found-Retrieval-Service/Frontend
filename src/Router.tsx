@@ -4,9 +4,14 @@ import Header from './components/Header';
 import Lost from './pages/Lost';
 import Detail from './pages/Detail';
 import Found from './pages/Found';
+import Search from './pages/Search';
 
 const Router = () => {
   const routerData = [
+    {
+      path: '/search',
+      element: <Search />,
+    },
     {
       path: '/lost',
       element: <Lost />,
