@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import CardView from '../components/CardView';
 import CardViewSkeleton from '../components/CardViewSkeleton';
-import { FoundProps } from '../types/Foundprops';
+import { FoundProps } from '../types/FoundProps';
 
 // TODO: 무한 스크롤? 페이지네이션? 구현
 const Found = () => {
