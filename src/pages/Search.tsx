@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
 import SearchProvider from '../providers/SearchProvider';
-import SearchBarFilter from '../components/SearchBarFilter';
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -38,7 +37,6 @@ export default function Search() {
       </StyledHeader>
       <SearchProvider>
         <SearchBar />
-        <SearchBarFilter />
       </SearchProvider>
     </StyledContainer>
   );

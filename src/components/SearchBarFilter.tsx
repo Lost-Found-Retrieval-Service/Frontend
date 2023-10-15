@@ -66,7 +66,7 @@ export default function SearchBarFilter() {
           />
         </LocalizationProvider>
         <button type="button" onClick={handleFilterButtonClick}>
-          클릭
+          ✅
         </button>
       </StyledSearchBarFilterContainer>
     );
@@ -84,7 +84,7 @@ export default function SearchBarFilter() {
             onChange={handleInputChange}
           />
           <button type="button" onClick={handleFilterButtonClick}>
-            클릭
+            ✅
           </button>
         </div>
       )}
