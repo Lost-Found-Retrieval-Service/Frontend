@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import SearchPage from './pages/SearchPage';
 import Lost from './pages/Lost';
 import Detail from './pages/Detail';
 import Found from './pages/Found';
+import Search from './pages/Search';
 
 const Router = () => {
   const routerData = [
     {
       path: '/',
-      element: <SearchPage />,
+      element: <Search />,
     },
     {
       path: '/lost',
