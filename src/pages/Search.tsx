@@ -27,7 +27,7 @@ const StyledLogoHeader = styled.span`
   font-size: 100px;
 `;
 
-export default function SearchPage() {
+export default function Search() {
   return (
     <StyledContainer>
       <StyledHeader>
