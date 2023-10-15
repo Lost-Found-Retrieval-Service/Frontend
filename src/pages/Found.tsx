@@ -63,7 +63,7 @@ const Found = () => {
 
   return (
     <Container>
-      <h1>습득물</h1>
+      <Title>습득물</Title>
 
       <GridWrapper>
         {isLoading ? (
@@ -108,4 +108,8 @@ const GridWrapper = styled.div`
   grid-auto-flow: row;
   justify-content: center;
   margin: 2rem;
+`;
+
+const Title = styled.h1`
+  padding-left: 8rem;
 `;

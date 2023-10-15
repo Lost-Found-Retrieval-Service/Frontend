@@ -63,7 +63,7 @@ const Lost = () => {
 
   return (
     <Container>
-      <h1>분실물</h1>
+      <Title>분실물</Title>
 
       <GridWrapper>
         {isLoading ? (
@@ -108,4 +108,8 @@ const GridWrapper = styled.div`
   grid-auto-flow: row;
   justify-content: center;
   margin: 2rem;
+`;
+
+const Title = styled.h1`
+  padding-left: 8rem;
 `;
