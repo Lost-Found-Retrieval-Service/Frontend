@@ -23,18 +23,16 @@ const Lost = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          process.env.REACT_APP_API_URL + '/lost',
-          {
-            params: {
-              date,
-              item,
-              location_detail,
-              location_city,
-              office,
-            },
+        const response = await axios.get('/lost', {
+          baseURL: process.env.REACT_APP_API_URL,
+          params: {
+            date,
+            item,
+            location_detail,
+            location_city,
+            office,
           },
-        );
+        });
 
         const data = response.data;
         console.log('lost-items', data.result);

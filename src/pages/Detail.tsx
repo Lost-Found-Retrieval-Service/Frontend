@@ -19,14 +19,15 @@ const Detail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.87.184:3000/lost', {
+        const response = await axios.get('/lost', {
+          baseURL: process.env.REACT_APP_API_URL,
           params: {
             atc_id,
           },
         });
 
         const data = response.data;
-        console.log('lost-items detail', data.result);
+        console.log('lost-items detail', data.result[0]);
         setDetail(data.result[0]);
       } catch (error) {
         console.error('API 호출 오류:', error);
