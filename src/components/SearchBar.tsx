@@ -5,16 +5,20 @@ import { useNavigate } from 'react-router-dom';
 import SearchBarFilter from './SearchBarFilter';
 import withConditionalWrapper from '../utils/withConditionalWrapper';
 
-const SytledSearchBarContainer = styled.div`
+interface SearchBarProps {
+  width?: string; // justifyContent 속성은 선택적으로 받아오도록 정의
+}
+
+const StyledSearchBarContainer = styled.div<SearchBarProps>`
   display: flex;
-  width: 100%;
-  justify-content: center;
+  width: ${(props) => (props.width ? props.width : '100%')};
+  justify-content: 'center';
   align-items: center;
 `;
 
 const StyledSearchBarList = styled.ul`
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
@@ -89,7 +93,7 @@ const searchItems = [
   },
 ];
 
-export default function SearchBar() {
+export default function SearchBar({ width }: SearchBarProps) {
   const { lostItem, turnedOnInput, setTurnedOnInput } =
     useContext(SearchContext)!;
   const navigate = useNavigate();
@@ -137,7 +141,7 @@ export default function SearchBar() {
   });
 
   return (
-    <SytledSearchBarContainer>
+    <StyledSearchBarContainer width={width}>
       <StyledSearchBarList>
         {SearchBarContent}
         <StyledSearchBarButton type="button" onClick={navigateToLost}>
@@ -151,6 +155,6 @@ export default function SearchBar() {
           </svg>
         </StyledSearchBarButton>
       </StyledSearchBarList>
-    </SytledSearchBarContainer>
+    </StyledSearchBarContainer>
   );
 }

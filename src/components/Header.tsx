@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
+import SearchProvider from '../providers/SearchProvider';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   const location = useLocation();
@@ -8,7 +10,9 @@ const Header = () => {
   // 메인 페이지가 아닌 경우에만 헤더를 렌더링
   return location.pathname === '/' ? null : (
     <Container>
-      <div>검색창</div>
+      <SearchProvider>
+        <SearchBar width="50%" />
+      </SearchProvider>
       <Nav>
         <Link to="/">
           <StyledButton>홈</StyledButton>
@@ -30,7 +34,7 @@ export default Header;
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   background-color: #3498db;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   padding: 0.5rem;
