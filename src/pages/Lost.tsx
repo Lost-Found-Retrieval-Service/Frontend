@@ -5,14 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import CardView from '../components/CardView';
 import CardViewSkeleton from '../components/CardViewSkeleton';
 import { LostProps } from '../types/LostProps';
-// import projectImg from '../assets/project.png';
+import { filteredItem } from '../types/FilteredItem';
 
 // TODO: 무한 스크롤? 페이지네이션? 구현
 const Lost = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [cardDatas, setCardDatas] = useState([]);
-  // const [isFetching, setIsFetching] = useState(false);
 
   const params = new URLSearchParams(location.search);
   const item = params.get('item');
@@ -24,23 +23,22 @@ const Lost = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          process.env.REACT_APP_API_URL + '/lost',
-          {
-            params: {
-              date,
-              item,
-              location_detail,
-              location_city,
-              office,
-            },
+        const response = await axios.get('/lost', {
+          baseURL: process.env.REACT_APP_API_URL,
+          params: {
+            date,
+            item,
+            location_detail,
+            location_city,
+            office,
           },
-        );
+        });
 
         const data = response.data;
         console.log('lost-items', data.result);
         const filteredResult = data.result.filter(
-          (item: { image: string }) =>
+          // 이미지가 있는 item만 필터
+          (item: filteredItem) =>
             item.image !==
             'https://www.lost112.go.kr/lostnfs/images/sub/img04_no_img.gif',
         );
@@ -64,8 +62,8 @@ const Lost = () => {
   };
 
   return (
-    <div>
-      <h1>분실물</h1>
+    <Container>
+      <Title>분실물</Title>
 
       <GridWrapper>
         {isLoading ? (
@@ -91,18 +89,17 @@ const Lost = () => {
           ))
         )}
       </GridWrapper>
-    </div>
+    </Container>
   );
 };
 
 export default Lost;
 
-// TODO: 데이터를 동적으로 불러오기
-// const cardData = Array.from({ length: 16 }, (_, index) => ({
-//   item: `카드 제목 ${index + 1}`,
-//   content: `카드 내용 ${index + 1}`,
-//   img: projectImg,
-// }));
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+`;
 
 const GridWrapper = styled.div`
   display: grid;
@@ -111,4 +108,8 @@ const GridWrapper = styled.div`
   grid-auto-flow: row;
   justify-content: center;
   margin: 2rem;
+`;
+
+const Title = styled.h1`
+  padding-left: 8rem;
 `;

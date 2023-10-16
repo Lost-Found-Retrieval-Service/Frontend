@@ -13,6 +13,12 @@ const CardWrapper = styled.div`
   min-width: 300px;
   min-height: 300px;
   margin: 16px;
+  cursor: pointer;
+
+  transition: transform 0.2s ease-in-out; /* duration을 0.2초로 변경 */
+  &:hover {
+    transform: translateY(-5px); /* 떠오르는 애니메이션 */
+  }
 `;
 
 const CardImg = styled.img`

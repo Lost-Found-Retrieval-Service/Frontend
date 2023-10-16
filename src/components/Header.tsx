@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
-  return (
+  const location = useLocation();
+
+  // 메인 페이지가 아닌 경우에만 헤더를 렌더링
+  return location.pathname === '/' ? null : (
     <Container>
       <div>검색창</div>
       <Nav>

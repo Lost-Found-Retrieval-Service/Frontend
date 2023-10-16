@@ -23,18 +23,16 @@ const Found = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          process.env.REACT_APP_API_URL + '/found',
-          {
-            params: {
-              date,
-              item,
-              location_storing,
-              location_found,
-              office,
-            },
+        const response = await axios.get('/found', {
+          baseURL: process.env.REACT_APP_API_URL,
+          params: {
+            date,
+            item,
+            location_storing,
+            location_found,
+            office,
           },
-        );
+        });
 
         const data = response.data;
         console.log('lost-items', data.result);
@@ -64,8 +62,8 @@ const Found = () => {
   };
 
   return (
-    <div>
-      <h1>습득물</h1>
+    <Container>
+      <Title>습득물</Title>
 
       <GridWrapper>
         {isLoading ? (
@@ -91,18 +89,17 @@ const Found = () => {
           ))
         )}
       </GridWrapper>
-    </div>
+    </Container>
   );
 };
 
 export default Found;
 
-// TODO: 데이터를 동적으로 불러오기
-// const cardData = Array.from({ length: 16 }, (_, index) => ({
-//   item: `카드 제목 ${index + 1}`,
-//   content: `카드 내용 ${index + 1}`,
-//   img: projectImg,
-// }));
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+`;
 
 const GridWrapper = styled.div`
   display: grid;
@@ -111,4 +108,8 @@ const GridWrapper = styled.div`
   grid-auto-flow: row;
   justify-content: center;
   margin: 2rem;
+`;
+
+const Title = styled.h1`
+  padding-left: 8rem;
 `;
