@@ -4,6 +4,7 @@ import SearchContext from '../contexts/SearchContext';
 import { useNavigate } from 'react-router-dom';
 import SearchBarFilter from './SearchBarFilter';
 import withConditionalWrapper from '../utils/withConditionalWrapper';
+import ToggleButton from './ToggleButton';
 
 interface SearchBarProps {
   width?: string; // justifyContent 속성은 선택적으로 받아오도록 정의
@@ -40,6 +41,11 @@ const StyledSearchBarItem = styled.span`
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
   }
+`;
+
+const StyledToggleItem = styled.span`
+  display: flex;
+  flex-direction: row;
 `;
 
 const StyledSearchBarButton = styled.button`
@@ -99,14 +105,24 @@ export default function SearchBar({ width }: SearchBarProps) {
   const navigate = useNavigate();
 
   const navigateToLost = () => {
-    const { name: item, date, place: location_detail, office } = lostItem;
+    const {
+      name: item,
+      date,
+      place: location_detail,
+      office,
+      isLost,
+    } = lostItem;
     const entries = Object.entries({ item, date, location_detail, office });
     const filteredEntries = entries.filter(([value]) => value !== null) as [
       string,
       string,
     ][];
     const queryString = new URLSearchParams(filteredEntries).toString();
-    navigate(`/lost?${queryString}`);
+    if (isLost) {
+      navigate(`/lost?${queryString}`);
+    } else {
+      navigate(`/found?${queryString}`);
+    }
   };
 
   const handleOptionButtonClick = (option: string) => {
@@ -144,6 +160,13 @@ export default function SearchBar({ width }: SearchBarProps) {
     <StyledSearchBarContainer width={width}>
       <StyledSearchBarList>
         {SearchBarContent}
+        <StyledSearchBarItem>
+          <StyledToggleItem>
+            습득물 찾기
+            <ToggleButton />
+            분실물 찾기
+          </StyledToggleItem>
+        </StyledSearchBarItem>
         <StyledSearchBarButton type="button" onClick={navigateToLost}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
