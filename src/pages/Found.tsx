@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import CardView from '../components/CardView';
 import CardViewSkeleton from '../components/CardViewSkeleton';
 import { FoundProps } from '../types/FoundProps';
+import IsLostContext from '../contexts/IsLostContext';
 
 // TODO: 무한 스크롤? 페이지네이션? 구현
 const Found = () => {
+  const { setIsLost } = useContext(IsLostContext)!;
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [cardDatas, setCardDatas] = useState([]);
@@ -58,6 +61,7 @@ const Found = () => {
 
   const onClick = (id: string) => {
     console.log(id);
+    setIsLost(false);
     navigate(`/detail?atc_id=${id}`);
   };
 

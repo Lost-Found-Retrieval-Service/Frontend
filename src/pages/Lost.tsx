@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -6,12 +6,14 @@ import CardView from '../components/CardView';
 import CardViewSkeleton from '../components/CardViewSkeleton';
 import { LostProps } from '../types/LostProps';
 import { filteredItem } from '../types/FilteredItem';
+import IsLostContext from '../contexts/IsLostContext';
 
 // TODO: 무한 스크롤? 페이지네이션? 구현
 const Lost = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [cardDatas, setCardDatas] = useState([]);
+  const { setIsLost } = useContext(IsLostContext)!;
 
   const params = new URLSearchParams(location.search);
   const item = params.get('item');
@@ -21,13 +23,19 @@ const Lost = () => {
   const office = params.get('office');
 
   useEffect(() => {
+    console.log(item, typeof item);
+    console.log(date, typeof date);
+    console.log(location_detail, typeof location_detail);
+    console.log(location_city, typeof location_city);
+    console.log(office, typeof office);
+
     const fetchData = async () => {
       try {
         const response = await axios.get('/lost', {
           baseURL: process.env.REACT_APP_API_URL,
           params: {
-            date,
             item,
+            date,
             location_detail,
             location_city,
             office,
@@ -58,6 +66,7 @@ const Lost = () => {
 
   const onClick = (id: string) => {
     console.log(id);
+    setIsLost(true);
     navigate(`/detail?atc_id=${id}`);
   };
 
