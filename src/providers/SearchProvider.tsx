@@ -11,6 +11,7 @@ type LostItem = {
   date: null | string;
   place: null | string;
   office: null | string;
+  isLost: boolean;
 };
 
 export type SearchContextType = {
@@ -30,6 +31,7 @@ export default function SearchProvider({ children }: SearchProviderProps) {
     date: null,
     place: null,
     office: null,
+    isLost: true,
   });
   const [turnedOnInput, setTurnedOnInput] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState<string>('');
