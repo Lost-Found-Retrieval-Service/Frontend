@@ -113,10 +113,10 @@ export default function SearchBar({ width }: SearchBarProps) {
       isLost,
     } = lostItem;
     const entries = Object.entries({ item, date, location_detail, office });
-    const filteredEntries = entries.filter(([value]) => value !== null) as [
-      string,
-      string,
-    ][];
+    const filteredEntries = entries.filter(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      ([_, value]) => value !== null && value !== 'null',
+    ) as [string, string][];
     const queryString = new URLSearchParams(filteredEntries).toString();
     if (isLost) {
       navigate(`/lost?${queryString}`);

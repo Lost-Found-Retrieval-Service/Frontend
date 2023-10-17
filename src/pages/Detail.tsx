@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import IsLostContext from '../contexts/IsLostContext';
 
 interface DetailProps {
   item: string;
@@ -15,13 +16,14 @@ const Detail = () => {
   const params = new URLSearchParams(location.search);
   const atc_id = params.get('atc_id');
   console.log('id', atc_id);
+  const { isLost } = useContext(IsLostContext)!;
 
   const [detail, setDetail] = useState<DetailProps>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/lost', {
+        const response = await axios.get(isLost ? '/lost' : '/found', {
           baseURL: process.env.REACT_APP_API_URL,
           params: {
             atc_id,
