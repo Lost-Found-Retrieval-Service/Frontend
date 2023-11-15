@@ -8,7 +8,7 @@ interface DetailProps {
   date: string;
   detail: string;
   image?: string;
-  location_detail: string;
+  location_storing: string;
   tel: string;
 }
 
@@ -45,8 +45,6 @@ const Detail = () => {
   // TODO: 데이터 동적으로 변경
   return (
     <div>
-      <h1>Detail Page</h1>
-
       {detail && (
         <Container>
           <Content>
@@ -58,8 +56,8 @@ const Detail = () => {
               <p>{detail.detail}</p>
               <Title>습득 시점</Title>
               <p>{detail.date}</p>
-              <Title>분실 지역</Title>
-              <p>{detail.location_detail}</p>
+              <Title>보관 위치</Title>
+              <p>{detail.location_storing}</p>
               <Title>전화번호</Title>
               <p>{detail.tel}</p>
             </Info>
@@ -88,6 +86,7 @@ const Info = styled.div`
   flex-direction: column;
   flex: 1;
   margin-left: 3rem;
+  gap: 1rem;
 `;
 
 const CardImg = styled.img`
