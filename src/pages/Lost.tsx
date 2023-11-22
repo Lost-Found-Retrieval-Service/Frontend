@@ -26,12 +26,6 @@ const Lost = () => {
   const office = params.get('office');
 
   useEffect(() => {
-    console.log(item, typeof item);
-    console.log(date, typeof date);
-    console.log(location_detail, typeof location_detail);
-    console.log(location_city, typeof location_city);
-    console.log(office, typeof office);
-
     const fetchData = async () => {
       try {
         const response = await axios.get('/lost', {
@@ -43,12 +37,11 @@ const Lost = () => {
             location_city,
             office,
             page,
-            numRows: 8,
+            numRows: 16,
           },
         });
 
         const data = response.data;
-        console.log('lost-items', data.result);
         // const filteredResult = data.result.filter(
         //   // 이미지가 있는 item만 필터
         //   (item: filteredItem) =>
@@ -70,14 +63,13 @@ const Lost = () => {
   }, []);
 
   const onClick = (id: string) => {
-    console.log(id);
     setIsLost(true);
     navigate(`/detail?atc_id=${id}`);
   };
 
   const options = {
     root: null, // 뷰포트를 기준으로 타켓의 가시성 검사
-    rootMargin: '0px 0px 50px 0px', // 확장 또는 축소 X
+    rootMargin: '0px 0px 20px 0px', // 확장 또는 축소 X
     threshold: 0.2,
   };
 
@@ -99,12 +91,11 @@ const Lost = () => {
                 location_city,
                 office,
                 page: page + 1,
-                numRows: 8,
+                numRows: 16,
               },
             });
 
             const data = response.data;
-            console.log('lost-items', data.result);
 
             // const filteredResult = data.result.filter(
             //   (item: { image: string }) =>
