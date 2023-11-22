@@ -41,12 +41,11 @@ const Found = () => {
             location_found,
             office,
             page,
-            numRows: 8,
+            numRows: 16,
           },
         });
 
         const data = response.data;
-        console.log('lost-items', data.result);
 
         // const filteredResult = data.result.filter(
         //   (item: { image: string }) =>
@@ -68,7 +67,6 @@ const Found = () => {
   }, []);
 
   const onClick = (id: string) => {
-    console.log(id);
     setIsLost(false);
     navigate(`/detail?atc_id=${id}`);
   };
@@ -97,12 +95,11 @@ const Found = () => {
                 location_found,
                 office,
                 page: page + 1,
-                numRows: 8,
+                numRows: 16,
               },
             });
 
             const data = response.data;
-            console.log('lost-items', data.result);
 
             // const filteredResult = data.result.filter(
             //   (item: { image: string }) =>
