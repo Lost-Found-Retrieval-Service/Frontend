@@ -1,0 +1,11 @@
+{
+  "routes": [
+    {
+      "src": "/naver-api/(.*)",
+      "dest": "https://openapi.naver.com",
+      "headers": {
+        "X-Custom-Header": "value"
+      }
+    }
+  ]
+}

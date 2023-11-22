@@ -47,7 +47,7 @@ const Detail = () => {
 
   const getMap = async (query: string) => {
     try {
-      const response = await axios.get('/v1/search/local.json', {
+      const response = await axios.get('/naver-api/v1/search/local.json', {
         params: { query },
         headers: {
           'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT_ID,
