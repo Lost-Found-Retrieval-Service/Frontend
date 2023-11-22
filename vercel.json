@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/naver-api/(.*)",
-      "dest": "https://openapi.naver.com"
+      "dest": "https://openapi.naver.com/$1"
     }
   ]
 }
