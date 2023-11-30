@@ -60,4 +60,5 @@ export default function Search() {
       </button>
     </StyledContainer>
   );
-}
+};
+

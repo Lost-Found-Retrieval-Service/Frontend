@@ -7,7 +7,7 @@ import withConditionalWrapper from '../utils/withConditionalWrapper';
 import ToggleButton from './ToggleButton';
 
 interface SearchBarProps {
-  width?: string; // justifyContent 속성은 선택적으로 받아오도록 정의
+  width?: string; // width 속성은 선택적으로 받아오도록 정의
 }
 
 const StyledSearchBarContainer = styled.div<SearchBarProps>`
