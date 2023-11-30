@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
 import SearchProvider from '../providers/SearchProvider';
+import Modal from '../components/Modal';
+import ModalSearchBar from '../components/ModalSearchBar';
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -27,6 +29,12 @@ const StyledLogoHeader = styled.span`
 `;
 
 export default function Search() {
+  const [IsModalOpened, setModalOpened] = useState<boolean>(false);
+
+  const handleActivateModal = () => {
+    setModalOpened((currentIsModalOpened) => !currentIsModalOpened);
+  };
+
   return (
     <StyledContainer>
       <StyledHeader>
@@ -37,7 +45,19 @@ export default function Search() {
       </StyledHeader>
       <SearchProvider>
         <SearchBar />
+        <Modal
+          hasCloseButton={true}
+          isOpen={IsModalOpened}
+          onModalAction={() =>
+            setModalOpened((currentModalOpened) => !currentModalOpened)
+          }
+        >
+          <ModalSearchBar />
+        </Modal>
       </SearchProvider>
+      <button type="button" onClick={handleActivateModal}>
+        이메일 알림🔔
+      </button>
     </StyledContainer>
   );
 }

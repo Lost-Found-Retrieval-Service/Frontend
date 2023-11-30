@@ -6,7 +6,7 @@ interface SearchProviderProps {
   children: ReactNode;
 }
 
-type LostItem = {
+export type LostItem = {
   name: null | string;
   date: null | string;
   place: null | string;
