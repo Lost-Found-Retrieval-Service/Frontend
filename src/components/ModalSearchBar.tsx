@@ -1,13 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import SearchContext from '../contexts/SearchContext';
-import { useNavigate } from 'react-router-dom';
-import SearchBarFilter from './SearchBarFilter';
 import withConditionalWrapper from '../utils/withConditionalWrapper';
-import ToggleButton from './ToggleButton';
 import dayjs from 'dayjs';
 import { LostItem } from '../providers/SearchProvider';
-import axios from 'axios';
 import ModalSearchBarFilter from './ModalSearchBarFilter';
 
 interface SearchBarProps {
@@ -45,11 +40,6 @@ const StyledSearchBarItem = styled.span`
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
   }
-`;
-
-const StyledToggleItem = styled.span`
-  display: flex;
-  flex-direction: row;
 `;
 
 const StyledSearchBarButton = styled.button`
