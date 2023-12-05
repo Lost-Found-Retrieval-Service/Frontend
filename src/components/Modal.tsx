@@ -12,14 +12,15 @@ const StyledBackground = styled.span`
 
 const StyledModal = styled.dialog`
   border: none;
-  width: 600px;
-  margin: 0;
+  width: 300px;
+  margin: 0px;
   border-radius: 16px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+  padding: 32px;
 
   &::backdrop {
     background-color: transparent;
@@ -28,6 +29,7 @@ const StyledModal = styled.dialog`
 
 const StyledCloseButton = styled.button`
   border: none;
+  font-size: 24px;
   background-color: #ffffff;
   &:hover {
     cursor: pointer;
@@ -35,6 +37,11 @@ const StyledCloseButton = styled.button`
   &:focus {
     border: none;
   }
+`;
+
+const ModalHeading = styled.h1`
+  font-size: 24px;
+  font-weight: 900;
 `;
 
 interface ModalPropsType {
@@ -47,6 +54,8 @@ interface ModalPropsType {
 const StyledTitleBar = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
 `;
 
 export default function Modal({
@@ -84,7 +93,7 @@ export default function Modal({
 
       <StyledModal ref={modalRef} onKeyDown={handleKeyDown}>
         <StyledTitleBar>
-          <h1>알림 받기</h1>
+          <ModalHeading>알림 받기</ModalHeading>
           {hasCloseButton && (
             <StyledCloseButton type="button" onClick={handleCloseModal}>
               ✖️
