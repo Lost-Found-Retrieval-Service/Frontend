@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
 import SearchProvider from '../providers/SearchProvider';
 import Modal from '../components/Modal';
-import ModalSearchBar from '../components/ModalSearchBar';
 import axios from 'axios';
 
 const StyledContainer = styled.div`
@@ -97,4 +96,3 @@ export default function Search() {
     </StyledContainer>
   );
 }
-
