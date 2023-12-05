@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SearchBar from '../components/SearchBar';
 import SearchProvider from '../providers/SearchProvider';
 import Modal from '../components/Modal';
-import ModalSearchBar from '../components/ModalSearchBar';
+import axios from 'axios';
 
 const StyledContainer = styled.div`
   height: 100vh;
@@ -28,8 +28,33 @@ const StyledLogoHeader = styled.span`
   font-size: 100px;
 `;
 
+const StyledInput = styled.input`
+  border: #ececec solid 16px;
+  background-color: #ececec;
+  border-radius: 16px;
+`;
+
+const InputRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledButton = styled.button`
+  font-size: 24px;
+`;
+
 export default function Search() {
   const [IsModalOpened, setModalOpened] = useState<boolean>(false);
+  const [email, setEmail] = useState('');
+
+  const registerEmail = () => {
+    const fetchEmail = async () => {
+      axios.get(`/subs?email=${email}`, {
+        baseURL: process.env.REACT_APP_API_URL,
+      });
+    };
+    fetchEmail();
+  };
 
   const handleActivateModal = () => {
     setModalOpened((currentIsModalOpened) => !currentIsModalOpened);
@@ -52,7 +77,17 @@ export default function Search() {
             setModalOpened((currentModalOpened) => !currentModalOpened)
           }
         >
-          <ModalSearchBar />
+          <InputRow>
+            <StyledInput
+              type="email"
+              name="fdsdf"
+              placeholder="이메일을 입력하세요"
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <StyledButton type="button" onClick={() => registerEmail()}>
+              ✅
+            </StyledButton>
+          </InputRow>
         </Modal>
       </SearchProvider>
       <button type="button" onClick={handleActivateModal}>
@@ -61,4 +96,3 @@ export default function Search() {
     </StyledContainer>
   );
 }
-
